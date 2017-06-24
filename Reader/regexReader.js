@@ -1,4 +1,5 @@
 const regexList = require('../Resources/regexResources');
+const regexDicipline = require('../Resources/regexDisciplineResources');
 
 // This function interates over a text using a given regex
 var interate_regex = (regex_text, text) => {
@@ -36,4 +37,12 @@ exports.disciplineUrls = (htmlData) => {
 //This regex is responsible for getting all class codes
 exports.disciplineCodes = (htmlData) => {
   return interate_regex(regexList.disciplineCode, htmlData);
+}
+
+exports.disciplineClassBlock = (htmlData) => {
+  return interate_regex(regexDicipline.classBlock, htmlData);
+}
+
+exports.disciplineHeaderBlock = (htmlData) => {
+	return interate_regex(regexDicipline.headerBlock, htmlData);
 }
