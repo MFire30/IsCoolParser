@@ -5,27 +5,22 @@ const classBlock = require('../Resources/regexDisciplineResources');
 const regexList = require('../Resources/regexResources');
 const regexReader = require ('./regexReader')
 
-
 exports.getDiscipline = (url) => {
 
-  return http.getHtmlFromHttps('https://www.matriculaweb.unb.br/graduacao/oferta_dados.aspx?cod=113042&dep=650',  (response) => {
-    console.log('Pegando página de c2 facil');
-    //console.log(response);
-
-    var htmlBody = '';
+  return http.getHtmlFromHttps(url,  (response) => {
     var discipline = {};
-    var classArray = [];
-    var headerArray = [];
+    var classBlocksArray = [];
+    var headerBlockArray = [];
 
-    classArray = regexReader.disciplineClassBlock (response);
-    console.log(classArray.length);
-    console.log('DEUS EH TOP');
+    var header = [];
+    var classes = [];
 
-    headerArray = regexReader.disciplineHeaderBlock (response);
+    classBlockArray = regexReader.disciplineClassBlock (response);
+    headerBlockArray = regexReader.disciplineHeaderBlock (response);
+    header = regexReader.disciplineHeader (headerBlockArray);
+    classes = regexReader.disciplineClass (classBlockArray);
 
-
-    console.log('pega o bloco');
-    console.log(headerArray);
+    console.log(classes);
   });
 
 }

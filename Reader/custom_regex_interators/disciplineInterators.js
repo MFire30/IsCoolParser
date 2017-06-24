@@ -45,12 +45,58 @@ exports.classInterator = (match) => {
     // Mounts the object
     result.classTurma = match[2];
     result.availability = regexReader.reader(regexListClass.classAvailability,
-      blockRawProfessors, null);
+      blockRawAvailability, availabilityInterator);
     result.dayPeriod = match[6];
     result.classDayTimes = regexReader.reader(regexListClass.classDayTimes,
-      blockRawProfessors, null);
+      blockRawClassDayTimes, dayTimesInterator);
     result.professors = regexReader.reader(regexListClass.professorNames,
       blockRawProfessors, null);
+
+      console.log('Class created: ');
+      console.log(result);
+  } else {
+    // Nothing to do
+  }
+
+  return result;
+}
+
+// This function is an strategy for regexInterator, customized for headerBlocks
+var availabilityInterator = (match) => {
+  // Checking if is a valid object
+  const neededSize = 7;
+  const notNull = match != null;
+  const enoughLength = (match.length >= neededSize);
+
+  let result = {};
+
+  // Creates the object or creates nothing (already clean)
+  if(notNull && enoughLength) {
+    result.total = match[1];
+    result.occupied = match[4];
+    result.remaining = match[7];
+  } else {
+    // Nothing to do
+  }
+
+  return result;
+}
+
+// This function is an strategy for regexInterator, customized for headerBlocks
+var dayTimesInterator = (match) => {
+  // Checking if is a valid object
+  const neededSize = 7;
+  const notNull = match != null;
+  const enoughLength = (match.length >= neededSize);
+
+  let result = {};
+
+  // Creates the object or creates nothing (already clean)
+  if(notNull && enoughLength) {
+    result.startHour = match[3];
+    result.finalHour = match[5];
+    result.local = match[7];
+    result.day = match[1];
   } else {
     // Nothing to do
   }

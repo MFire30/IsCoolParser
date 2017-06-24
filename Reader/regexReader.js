@@ -1,27 +1,31 @@
 const regexList = require('../Resources/regexResources');
 const regexDicipline = require('../Resources/regexDisciplineResources');
-const classInterators = require('./custom_regex_interators/disciplineInterators');
+const disciplineInterators = require('./custom_regex_interators/disciplineInterators');
 
+var arrayRegex = (array) => {
+	var arrayResult = [];
+	for(var counter = 0; counter < array.length; counter++){
 
+	}
+}
 // This function interates over a text using a given regex
 var interateRegex = (regex_text, text, customStrategy) => {
-	let match = {};
-  let result = [];
-	let interatorStrategy = customStrategy;
+	var match = {};
+  var result = [];
+	var interatorStrategy = customStrategy;
 
 	// The condition checks if was given a regex interator custom strategy
-	if(customStrategy == null){
+	if(interatorStrategy == null){
 		interatorStrategy = defaultRegexInterator;
 	} else {
-		console.log('regexReader.interateRegex: Using custom strategy...');
 		// Nothing to do
 	}
 
   // If exists a match, it will get it, parse it, and push it to the array
 	while (match = regex_text.exec(text)){
-		result.push(interatorStrategy(match));
+		const newData = interatorStrategy(match);
+		result.push(newData);
 	};
-
 	// Returns the array that was build in the loop above
 	return result;
 }
@@ -74,9 +78,19 @@ exports.reader = (regexText, textData, interatorStrategy) => {
 }
 
 exports.disciplineClassBlock = (htmlData) => {
-  return interate_regex(regexDicipline.classBlock, htmlData);
+  return interateRegex(regexDicipline.classBlock, htmlData, null);
 }
 
 exports.disciplineHeaderBlock = (htmlData) => {
-	return interate_regex(regexDicipline.headerBlock, htmlData);
+	return interateRegex(regexDicipline.headerBlock, htmlData, null);
+}
+
+exports.disciplineHeader = (htmlData) => {
+	return interateRegex(regexDicipline.headerInfo, htmlData,
+		disciplineInterators.headerInterator);
+}
+
+exports.disciplineClass = (htmlData) => {
+	return interateRegex(regexDicipline.classInfo, htmlData,
+		disciplineInterators.classInterator);
 }
