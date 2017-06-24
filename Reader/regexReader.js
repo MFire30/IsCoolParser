@@ -1,4 +1,5 @@
 const regexList = require('../Resources/regexResources');
+const classInterators = require('./custom_regex_interators/disciplineInterators');
 
 // This function interates over a text using a given regex
 var interateRegex = (regex_text, text, customStrategy) => {
@@ -27,7 +28,7 @@ var interateRegex = (regex_text, text, customStrategy) => {
 // This function takes a regex match and returns the first group ([1]).
 var defaultRegexInterator = (match) => {
 	const notNull = match != null;
-	const enoughLength = ((match.length) > 1);
+	const enoughLength = ((match.length) >= 1);
 	let matchResult = {};
 
 	if(notNull && enoughLength){
@@ -35,7 +36,7 @@ var defaultRegexInterator = (match) => {
 	} else {
 		// nothing to do
 	}
-	
+
 	return matchResult;
 }
 
@@ -63,4 +64,9 @@ exports.disciplineUrls = (htmlData) => {
 //This regex is responsible for getting all class codes
 exports.disciplineCodes = (htmlData) => {
   return interateRegex(regexList.disciplineCode, htmlData, null);
+}
+
+// This is for any regex neededSize
+exports.reader = (regexText, textData, interatorStrategy) => {
+	return interateRegex(regexText, textData, interatorStrategy)
 }
