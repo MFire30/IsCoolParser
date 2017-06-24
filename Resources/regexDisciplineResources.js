@@ -29,4 +29,4 @@ exports.headerInfo = /Departamento: <strong><a href=(.*?)>(.*?)<\/a>(.*?)<b>([0-
 // [8] -> Class day times info (Needs another regex)
 // [10] -> Class professor names (Needs another regex)
 // TO-DO: Groups dictionary
-exports.classInfo = /([\s\S]*)class=titulo><font size=4><b>(.*?)<\/b>([\s\S]*)<table width=100%>([\s\S]*)<\/tr>        <\/table>     <\/td><td width=40 nowrap>([\s\S]*)Helvetica, sans-serif>(.*?)<br>([\s\S]*)nowrap class=padrao align=center>([\s\S]*)<\/td><td valign(.*?)<center>(.*?)<\/center>/ig;
+exports.classInfo = /([\s\S]*?)class=titulo><font size=4><b>(.*?)<\/b>([\s\S]*?)<table width=100%>([\s\S]*?)<\/tr>        <\/table>     <\/td><td width=40 nowrap>([\s\S]*?)Helvetica, sans-serif>(.*?)<br>([\s\S]*?)nowrap class=padrao align=center>([\s\S]*?)<\/td><td valign(.*?)<center>(.*?)<\/center>/ig;

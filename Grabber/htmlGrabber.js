@@ -10,7 +10,8 @@ exports.getHtmlFromHttps = (url, callback) => {
     const responseCode = response.statusCode;
 
     if(responseCode == 200) {
-      console.log('htmlGrabber.getHtmlFromHttps: Got status 200! Getting FGA MW HTML...');
+      console.log('htmlGrabber.getHtmlFromHttps: Got status 200!');
+      console.log('htmlGrabber.getHtmlFromHttps: Getting ' + url);
     } else {
       console.warn('htmlGrabber.getHtmlFromHttps: It seems that you got another status code...');
       console.warn(responseCode);
