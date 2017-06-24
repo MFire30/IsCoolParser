@@ -21,7 +21,7 @@ exports.getHtmlFromHttps = (url, callback) => {
       console.error('htmlGrabber.getHtmlFromHttps: Ops! Could not get the requested URL...');
       console.error('htmlGrabber.getHtmlFromHttps: See the error below:');
       console.error(errorFound);
-      
+
     });
 
     // This variable will hold the html response for returning as a callback

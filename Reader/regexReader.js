@@ -1,5 +1,7 @@
 const regexList = require('../Resources/regexResources');
+const regexDicipline = require('../Resources/regexDisciplineResources');
 const classInterators = require('./custom_regex_interators/disciplineInterators');
+
 
 // This function interates over a text using a given regex
 var interateRegex = (regex_text, text, customStrategy) => {
@@ -69,4 +71,12 @@ exports.disciplineCodes = (htmlData) => {
 // This is for any regex neededSize
 exports.reader = (regexText, textData, interatorStrategy) => {
 	return interateRegex(regexText, textData, interatorStrategy)
+}
+
+exports.disciplineClassBlock = (htmlData) => {
+  return interate_regex(regexDicipline.classBlock, htmlData);
+}
+
+exports.disciplineHeaderBlock = (htmlData) => {
+	return interate_regex(regexDicipline.headerBlock, htmlData);
 }
