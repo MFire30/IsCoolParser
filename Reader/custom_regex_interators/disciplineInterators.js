@@ -25,7 +25,7 @@ exports.headerInterator = (match) => {
   return result;
 }
 
-// This function is an strategy for regexInterator, customized for headerBlocks
+// This function is an strategy for regexInterator, customized for class blocks
 exports.classInterator = (match) => {
   const neededSize = 10;
   const notNull = match != null;
@@ -51,9 +51,6 @@ exports.classInterator = (match) => {
       blockRawClassDayTimes, dayTimesInterator);
     result.professors = regexReader.reader(regexListClass.professorNames,
       blockRawProfessors, null);
-
-      console.log('Class created: ');
-      console.log(result);
   } else {
     // Nothing to do
   }
@@ -61,7 +58,7 @@ exports.classInterator = (match) => {
   return result;
 }
 
-// This function is an strategy for regexInterator, customized for headerBlocks
+// This function is an strategy for regexInterator, customized for availability blocks
 var availabilityInterator = (match) => {
   // Checking if is a valid object
   const neededSize = 7;
@@ -82,7 +79,7 @@ var availabilityInterator = (match) => {
   return result;
 }
 
-// This function is an strategy for regexInterator, customized for headerBlocks
+// This function is an strategy for regexInterator, customized for dayTimes blocks
 var dayTimesInterator = (match) => {
   // Checking if is a valid object
   const neededSize = 7;

@@ -81,10 +81,6 @@ exports.disciplineClassBlock = (htmlData) => {
   return interateRegex(regexDicipline.classBlock, htmlData, null);
 }
 
-exports.disciplineHeaderBlock = (htmlData) => {
-	return interateRegex(regexDicipline.headerBlock, htmlData, null);
-}
-
 exports.disciplineHeader = (htmlData) => {
 	return interateRegex(regexDicipline.headerInfo, htmlData,
 		disciplineInterators.headerInterator);
