@@ -20,5 +20,15 @@ exports.getDisciplines = () => {
     exports.disciplineUrls = regexReader.disciplineUrls(exports.disciplineBlocks);
 
     console.log('mainPageReader.getDisciplines: Ok, regex done.  Function finished.');
+
+    // For demonstrations reasons, here's the data that was got
+    console.log('\nmainPageReader.getDisciplines: Showing the data...');
+    console.log('Discipline count for FGA:');
+    console.log(JSON.stringify(exports.disciplineCount));
+    console.log('\nDiscipline names for FGA:');
+    console.log(JSON.stringify(exports.disciplineNames));
+    console.log('\nDiscipline URLs sulfix:');
+    console.log(JSON.stringify(exports.disciplineUrls));
+
   });
 }
