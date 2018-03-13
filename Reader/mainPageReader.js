@@ -1,4 +1,4 @@
-const regexReader = require('../Reader/regexReader');
+const offerReader = require('../Reader/customReaders/offerReader');
 const htmlGrabber = require('../Grabber/htmlGrabber');
 const urls = require('../Resources/urlResources');
 
@@ -13,11 +13,9 @@ exports.getDisciplines = () => {
     console.log('mainPageReader.getDisciplines: Ok, got response. Now, using regexReader...');
 
     // Here, each important data is parsed and exported for future use
-    exports.disciplineCount = regexReader.disciplineCount(htmlBody);
-    exports.disciplineBlocks = regexReader.disciplineBlocks(htmlBody);
-    exports.disciplineNames = regexReader.disciplineNames(exports.disciplineBlocks);
-    exports.disciplineCodes = regexReader.disciplineCodes(exports.disciplineBlocks);
-    exports.disciplineUrls = regexReader.disciplineUrls(exports.disciplineBlocks);
+    exports.disciplineCount = offerReader.disciplineCount(htmlBody);
+    exports.disciplineBlocks = offerReader.disciplineBlocks(htmlBody);
+    exports.disciplineInfos = offerReader.disciplineInfos(exports.disciplineBlocks);
 
     console.log('mainPageReader.getDisciplines: Ok, regex done.  Function finished.');
 
@@ -26,9 +24,8 @@ exports.getDisciplines = () => {
     console.log('Discipline count for FGA:');
     console.log(JSON.stringify(exports.disciplineCount));
     console.log('\nDiscipline names for FGA:');
-    console.log(JSON.stringify(exports.disciplineNames));
-    console.log('\nDiscipline URLs sulfix:');
-    console.log(JSON.stringify(exports.disciplineUrls));
-
+    console.log(JSON.stringify(exports.disciplineBlocks.length));
+    console.log('\nDiscipline names for FGA:');
+    console.log(JSON.stringify(exports.disciplineInfos.length));
   });
 }

@@ -1,6 +1,22 @@
 const regexReader = require('../regexReader');
 const regexListClass = require('../../Resources/regexClassResources');
 
+exports.basicDisciplineInfoInterator = (match) => {
+  let result = {};
+  const groupCount = 3;
+  const rightSize = match.length >= groupCount;
+
+  if(match && rightSize) {
+    result.cod = match[1];
+    result.name = match[2];
+    result.link = match[3];
+  } else {
+    // Do nothing
+  }
+
+  return result;
+}
+
 // This function is an strategy for regexInterator, customized for headerBlocks
 exports.headerInterator = (match) => {
   // Checking if is a valid object
