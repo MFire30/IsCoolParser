@@ -1,5 +1,7 @@
 const regexReader = require('../regexReader');
-const regexListClass = require('../../Resources/regexClassResources');
+const regexDisciplineInfo = require('../../Resources/regexDisciplineInfo');
+const regexDisciplineHeader = require('../../Resources/regexDisciplineHeader');
+
 
 exports.basicDisciplineInfoInterator = (match) => {
   let result = {};

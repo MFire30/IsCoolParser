@@ -1,20 +1,22 @@
-const http = require ('../Grabber/htmlGrabber');
+const https = require ('../Grabber/htmlGrabber');
 const htmlGrabber = require('../Grabber/htmlGrabber');
-const regexReader = require ('./regexReader')
+const regexReader = require ('./customReaders/discipline');
+
+const classBuilder = require('./classBuilder');
+const headerBuilder = require('./headerBuilder');
 
 exports.getDiscipline = (url) => {
+  return https.getHtmlFromHttps(url,  (response) => {
+    let discipline = {};
+    let classBlocksArray = [];
 
-  return http.getHtmlFromHttps(url,  (response) => {
-    var discipline = {};
-    var classBlocksArray = [];
+    classBlockArray = regexReader.classBlock(response);
 
-    classBlockArray = regexReader.disciplineClassBlock (response);
-    discipline.header = regexReader.disciplineHeader (response);
-    discipline.classes = regexReader.disciplineClass (classBlockArray);
+    discipline.header = headerBuilder.buildHeader(response);
+    discipline.classes = classBuilder.buildClass(classBlockArray[0]);
 
-    console.log('\nJSON for ' + discipline.header[0].name + '\n');
     console.log(JSON.stringify(discipline));
-    console.log('\n');
+    return discipline;
   });
 
 }

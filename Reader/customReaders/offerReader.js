@@ -1,5 +1,4 @@
 const regexList = require('../../Resources/regexDisciplineList');
-const regexDicipline = require('../../Resources/regexDisciplineResources');
 const disciplineInterators = require('../customRegexInterators/disciplineInterators');
 
 const regexReader = require('../regexReader');

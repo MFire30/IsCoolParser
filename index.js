@@ -7,9 +7,10 @@ exports.getAllDisciplines = () => {
 }
 
 // Gets any specifc discipline from MW
-exports.getSpecific = (url) => {
-  disciplineReader.getDiscipline(url);
+exports.getSpecific = async (url) => {
+  return await disciplineReader.getDiscipline(url);
 }
 
 // Uses the functions
-exports.getAllDisciplines();
+exports.getSpecific('https://matriculaweb.unb.br/graduacao/oferta_dados.aspx?cod=113042&dep=650');
+exports.getSpecific('https://matriculaweb.unb.br/graduacao/oferta_dados.aspx?cod=120642&dep=650');
