@@ -1,4 +1,4 @@
-const regexReader = require('./regexReader');
+const regexReader = require('../Reader/regexReader');
 const regexDisciplineInfo = require('../Resources/regexDisciplineInfo');
 
 exports.buildClass = (classHtmlMatch) => {

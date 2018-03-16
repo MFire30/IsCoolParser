@@ -1,4 +1,4 @@
-const regexReader = require('./regexReader');
+const regexReader = require('../Reader/regexReader');
 const regexDisciplineHeader = require('../Resources/regexDisciplineHeader');
 
 exports.buildHeader = (htmlData) => {

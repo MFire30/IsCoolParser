@@ -18,3 +18,14 @@ exports.disciplineInfos = (htmlData) => {
 	return regexReader.interateArrayRegex(regexList.disciplineInfo, htmlData,
 		disciplineInterators.basicDisciplineInfoInterator);
 }
+
+exports.departmentName = (htmlData) => {
+	const result = regexReader.interateRegex(regexList.offerDeptoName, htmlData, null);
+
+  if (result && result.length > 0){
+    return result[0].trim();
+  } else {
+    console.error('OfferReader department name: Match does not meet requirements!');
+    return null;
+  }
+}
